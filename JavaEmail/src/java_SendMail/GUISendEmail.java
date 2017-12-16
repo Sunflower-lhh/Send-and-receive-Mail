@@ -1,5 +1,10 @@
-package java_SendEmail;
+package java_SendMail;
 
+/*
+ * code by Duy
+ */
+
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Properties;
- 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,16 +26,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
- 
 
- 
-/**
- * A Swing application that allows sending e-mail messages from a SMTP server.
- * @author www.codejava.net
- *
- */
+import java_SendMail.JFilePicker;
+
 public class GUISendEmail extends JFrame {
-    private JavaSendEmail configUtil = new JavaSendEmail();
+    private SendEmail configUtil = new SendEmail();
      
     private JMenuBar menuBar = new JMenuBar();
     private JMenu menuFile = new JMenu("File");
@@ -44,7 +44,7 @@ public class GUISendEmail extends JFrame {
      
     private JButton buttonSend = new JButton("SEND");
      
-
+    private JFilePicker filePicker = new JFilePicker("Attached","attach file");
      
     private JTextArea textAreaMessage = new JTextArea(10, 30);
      
@@ -115,7 +115,9 @@ public class GUISendEmail extends JFrame {
         constraints.gridy = 2;
         constraints.gridheight = 1;
         constraints.gridwidth = 3;
-   
+        filePicker.setMode(JFilePicker.MODE_OPEN);
+        add(filePicker, constraints);
+         
         constraints.gridy = 3;
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
@@ -123,7 +125,10 @@ public class GUISendEmail extends JFrame {
         add(new JScrollPane(textAreaMessage), constraints);    
     }
      
-    private void buttonSendActionPerformed(ActionEvent event) {
+		
+	
+
+	private void buttonSendActionPerformed(ActionEvent event) {
         if (!validateFields()) {
             return;
         }
@@ -133,7 +138,11 @@ public class GUISendEmail extends JFrame {
         String message = textAreaMessage.getText();
          
         File[] attachFiles = null;
-       
+         
+        if (!( filePicker).getSelectedFilePath().equals("")) {
+            File selectedFile = new File(filePicker.getSelectedFilePath());
+            attachFiles = new File[] {selectedFile};
+        }
          
         try {
             Properties smtpProperties = configUtil.loadProperties();
@@ -175,6 +184,6 @@ public class GUISendEmail extends JFrame {
         }
          
         return true;
-    }}
-     
-  
+    }
+    
+}

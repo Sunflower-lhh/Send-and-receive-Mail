@@ -1,4 +1,8 @@
-package java_SendEmail;
+package java_SendMail;
+
+/*
+ * code by Duy
+ */
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,13 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
- 
-/**
- * A utility class that reads/saves SMTP settings from/to a properties file.
- * @author www.codejava.net
- *
- */
-public class JavaSendEmail {
+public class SendEmail {
     private File configFile = new File("smtp.properties");
     private Properties configProps;
      
@@ -22,7 +20,7 @@ public class JavaSendEmail {
         // sets default properties
         defaultProps.setProperty("mail.smtp.host", "smtp.gmail.com");
         defaultProps.setProperty("mail.smtp.port", "587");
-        defaultProps.setProperty("mail.user","duylucky2014@gmail.com");
+        defaultProps.setProperty("mail.user", "duylucky2014@gmail.com");
         defaultProps.setProperty("mail.password", "plvpinfkaxpzqbgu");
         defaultProps.setProperty("mail.smtp.starttls.enable", "true");
         defaultProps.setProperty("mail.smtp.auth", "true");

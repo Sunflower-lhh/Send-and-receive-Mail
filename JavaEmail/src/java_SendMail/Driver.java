@@ -1,4 +1,8 @@
-package java_SendEmail;
+package java_SendMail;
+
+/*
+ * code by Duy
+ */
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,21 +11,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Properties;
- 
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
- 
-/**
- * Duy Le
- *
- */
+
 public class Driver extends JDialog {
- 
-    private JavaSendEmail configUtil;
+	 
+    private SendEmail configUtil;
      
     private JLabel labelHost = new JLabel("Host name: ");
     private JLabel labelPort = new JLabel("Port number: ");
@@ -35,7 +35,7 @@ public class Driver extends JDialog {
      
     private JButton buttonSave = new JButton("Save");
      
-    public Driver(JFrame parent, JavaSendEmail configUtil) {
+    public Driver(JFrame parent, SendEmail configUtil) {
         super(parent, "SMTP Settings", true);
         this.configUtil = configUtil;
          

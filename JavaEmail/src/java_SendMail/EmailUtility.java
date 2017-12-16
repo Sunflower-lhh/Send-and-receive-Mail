@@ -1,10 +1,13 @@
-package java_SendEmail;
+package java_SendMail;
+/*
+ * code by Duy
+ */
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
- 
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -17,14 +20,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
- 
-/**
- * A utility class that sends an e-mail message with attachments.
- * @author www.codejava.net
- *
- */
+
 public class EmailUtility {
-    public static void sendEmail(Properties smtpProperties, String toAddress,
+	public static void sendEmail(Properties smtpProperties, String toAddress,
             String subject, String message, File[] attachFiles)
             throws AddressException, MessagingException, IOException {
  
@@ -79,3 +77,4 @@ public class EmailUtility {
  
     }
 }
+
